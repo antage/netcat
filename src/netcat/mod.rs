@@ -50,7 +50,7 @@ pub fn parse_args() -> Result<Args, Error> {
 				try!(
 					matches
 						.opt_str("l")
-						.ok_or(Error::PortIsAbsent("You should specify TCP-port for listen mode.".to_string()))
+						.ok_or(Error::PortIsAbsent("You should specify TCP-port for listen mode."))
 				)
 					.parse()
 			);
@@ -60,7 +60,7 @@ pub fn parse_args() -> Result<Args, Error> {
 		if matches.free.len() == 0  && !matches.opt_present("h") {
 			Ok(Args::Usage(program.clone(), opts))
 		} else if matches.free.len() < 2 {
-			Err(Error::HostnameAndPortAreAbsent("You should specify hostname and TCP-port.".to_string()))
+			Err(Error::HostnameAndPortAreAbsent("You should specify hostname and TCP-port."))
 		} else {
 			let hostname = &matches.free[0];
 			let port: u16 = try!(matches.free[1].parse());

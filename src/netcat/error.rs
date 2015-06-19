@@ -7,8 +7,8 @@ use super::getopts_error;
 #[derive(Debug)]
 pub enum Error {
 	GetoptsFail(getopts_error::Fail),
-	PortIsAbsent(String),
-	HostnameAndPortAreAbsent(String),
+	PortIsAbsent(&'static str),
+	HostnameAndPortAreAbsent(&'static str),
 	PortParse(std::num::ParseIntError),
 	IO(std::io::Error),
 }
